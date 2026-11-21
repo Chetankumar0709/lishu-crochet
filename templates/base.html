@@ -4,13 +4,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="{% block meta_description %}Lishu Crochet creates elegant handmade flower bouquets, crochet floral gifts and custom arrangements.{% endblock %}">
+  <meta name="description" content="{% block meta_description %}Lishu Floral Creations offers elegant handmade flower bouquets, floral gifts and custom arrangements.{% endblock %}">
   <meta name="theme-color" content="#b85c7a">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="{% block og_title %}{{ site_settings.business_name|default:'Lishu Crochet' }}{% endblock %}">
-  <meta property="og:description" content="{% block og_description %}Handmade floral and crochet gifts, crafted with love.{% endblock %}">
+  <meta property="og:title" content="Lishu Floral Creations">
+  <meta property="og:description" content="Handmade floral gifts and custom arrangements, crafted with love.">
   <meta property="og:image" content="{% block og_image %}{% endblock %}">
-  <title>{% block title %}{{ site_settings.business_name|default:"Lishu Crochet" }} | Handmade Floral Gifts{% endblock %}</title>
+  <title>{% block title %}Lishu Floral Creations | Handmade Floral Gifts{% endblock %}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -23,7 +23,7 @@
   <nav class="navbar navbar-expand-lg fixed-top" id="mainNav" aria-label="Main navigation">
     <div class="container">
       <a class="navbar-brand" href="{% url 'products:home' %}">
-        {% if site_settings.logo %}<img src="{{ site_settings.logo.url }}" alt="{{ site_settings.business_name }}" height="42">{% else %}<span class="brand-mark">LC</span><span>{{ site_settings.business_name|default:"Lishu Crochet" }}</span>{% endif %}
+        {% if site_settings.logo %}<img src="{{ site_settings.logo.url }}" alt="Lishu Floral Creations" height="42">{% else %}<span class="brand-mark">LFC</span><span>Lishu Floral Creations</span>{% endif %}
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navMenu">
@@ -41,11 +41,11 @@
   <footer class="footer">
     <div class="container">
       <div class="row gy-4">
-        <div class="col-lg-5"><h2 class="footer-brand">{{ site_settings.business_name|default:"Lishu Crochet" }}</h2><p>Handmade flowers and crochet gifts made to celebrate life's beautiful moments.</p></div>
+        <div class="col-lg-5"><h2 class="footer-brand">Lishu Floral Creations</h2><p>Handmade floral gifts made to celebrate life's beautiful moments.</p></div>
         <div class="col-6 col-lg-3"><h3>Explore</h3><ul class="footer-links"><li><a href="#about">Our Story</a></li><li><a href="#products">Collections</a></li><li><a href="#contact">Contact</a></li></ul></div>
         <div class="col-6 col-lg-4"><h3>Legal</h3><ul class="footer-links"><li><a href="{% url 'products:privacy' %}">Privacy Policy</a></li><li><a href="{% url 'products:terms' %}">Terms and Conditions</a></li></ul></div>
       </div>
-      <div class="footer-bottom"><span>{{ site_settings.copyright_label|default:"© 2026 Lishu Crochet. All rights reserved." }}</span><div class="social-links">{% if site_settings.instagram_link %}<a href="{{ site_settings.instagram_link }}" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>{% endif %}{% if site_settings.facebook_link %}<a href="{{ site_settings.facebook_link }}" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>{% endif %}{% if site_settings.youtube_link %}<a href="{{ site_settings.youtube_link }}" target="_blank" rel="noopener" aria-label="YouTube"><i class="bi bi-youtube"></i></a>{% endif %}</div></div>
+      <div class="footer-bottom"><span>{{ site_settings.copyright_label|default:"© 2026 Lishu Floral Creations. All rights reserved." }}</span><div class="social-links">{% if site_settings.instagram_link %}<a href="{{ site_settings.instagram_link }}" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>{% endif %}{% if site_settings.facebook_link %}<a href="{{ site_settings.facebook_link }}" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>{% endif %}{% if site_settings.youtube_link %}<a href="{{ site_settings.youtube_link }}" target="_blank" rel="noopener" aria-label="YouTube"><i class="bi bi-youtube"></i></a>{% endif %}</div></div>
     </div>
   </footer>
   <a href="#top" class="back-to-top" id="backToTop" aria-label="Back to top"><i class="bi bi-arrow-up"></i></a>

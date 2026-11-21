@@ -57,7 +57,7 @@ class ProductImage(models.Model):
 
 
 class SiteSettings(models.Model):
-    business_name = models.CharField(max_length=150, default="Lishu Crochet")
+    business_name = models.CharField(max_length=150, default="Lishu Floral Creations")
     logo = models.ImageField(upload_to="site/", blank=True, null=True)
     phone_number = models.CharField(max_length=30, blank=True)
     whatsapp_number = models.CharField(max_length=30, blank=True, help_text="Digits only, including country code")
@@ -66,8 +66,8 @@ class SiteSettings(models.Model):
     instagram_link = models.URLField(blank=True)
     facebook_link = models.URLField(blank=True)
     youtube_link = models.URLField(blank=True)
-    copyright_text = models.CharField(max_length=200, default="© {year} Lishu Crochet. All rights reserved.")
-    hero_text = models.CharField(max_length=220, default="Thoughtfully handcrafted flowers and crochet gifts, made with love.")
+    copyright_text = models.CharField(max_length=200, default="© {year} Lishu Floral Creations. All rights reserved.")
+    hero_text = models.CharField(max_length=220, default="Thoughtfully handcrafted floral gifts, made with love and designed to preserve memories.")
 
     class Meta:
         verbose_name = "Site Setting"

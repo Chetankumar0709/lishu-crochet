@@ -1,4 +1,4 @@
-"""Production-capable settings for Lishu Crochet."""
+"""Production-capable settings for Lishu Floral Creations."""
 import os
 from pathlib import Path
 

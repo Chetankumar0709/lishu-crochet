@@ -7,7 +7,7 @@
   <div class="container hero-content">
     <p class="eyebrow">HANDMADE WITH LOVE</p>
     <h1 id="hero-title">Flowers that last,<br><em>memories that bloom.</em></h1>
-    <p class="hero-lead">{{ site_settings.hero_text|default:"Thoughtfully handcrafted flowers and crochet gifts, made with love." }}</p>
+    <p class="hero-lead">Thoughtfully handcrafted floral gifts, made with love and designed to preserve memories.</p>
     <div class="hero-actions"><a class="btn btn-primary btn-lg" href="#products">Shop Now <i class="bi bi-arrow-down ms-2"></i></a>{% if site_settings.whatsapp_number %}<a class="btn btn-outline-light btn-lg" href="https://wa.me/{{ site_settings.whatsapp_number }}?text=Hello%2C%20I%20would%20like%20to%20know%20more%20about%20your%20products" target="_blank" rel="noopener"><i class="bi bi-whatsapp me-2"></i>WhatsApp</a>{% endif %}</div>
   </div>
   <a class="scroll-cue" href="#about" aria-label="Scroll to about section"><i class="bi bi-chevron-double-down"></i></a>
@@ -20,8 +20,8 @@
         <div class="about-image-wrap"><img src="{% static 'images/IMG_20261121_084449.jpg' %}" alt="Handmade floral gift crafted with care" class="img-fluid about-image"><div class="experience-badge"><strong>100%</strong><span>Handmade</span></div></div>
       </div>
       <div class="col-lg-6 ps-lg-5">
-        <p class="section-eyebrow">OUR STORY</p><h2 class="section-title">Every stitch carries<br><em>a little love.</em></h2>
-        <p class="section-text">At {{ site_settings.business_name|default:"Lishu Crochet" }}, each creation begins with care and grows with patience. Our crochet flowers and handmade arrangements preserve the warmth of fresh blooms without the fleeting moment, helping you preserve beautiful memories for a long time.</p>
+        <p class="section-eyebrow">OUR STORY</p><h2 class="section-title">Every bloom carries<br><em>a little love.</em></h2>
+        <p class="section-text">At Lishu Floral Creations, each creation begins with care and grows with patience. Our handmade pipe-cleaner floral designs and arrangements preserve the warmth of fresh blooms without the fleeting moment, helping you preserve beautiful memories for a long time.</p>
         <p class="section-text">We follow an eco-friendly approach by creating lasting handmade gifts that bring beauty without the everyday waste of fresh flowers. We also support and customise every creation according to your specific requirements, from colours and flowers to the final finishing.</p>
         <a href="#contact" class="text-link">Request a custom piece <i class="bi bi-arrow-right ms-2"></i></a>
       </div>
@@ -38,7 +38,7 @@
       <div class="col-sm-6 col-lg-3 product-item category-{{ product.category_id }}" id="product-{{ product.pk }}">
         <article class="product-card">
           <div class="product-image-wrap"><img src="{{ product.image.url }}" alt="{{ product.name }} handmade gift" loading="lazy"><div class="product-category">{{ product.category.name }}</div></div>
-          <div class="product-body"><h3>{{ product.name }}</h3><p>{{ product.description|truncatewords:12 }}</p><div class="product-footer"><span class="price">₹{{ product.price|floatformat:0 }}</span>{% if site_settings.whatsapp_number %}<a class="whatsapp-order" href="https://wa.me/{{ site_settings.whatsapp_number }}?text=Hello%2C%20I%20would%20like%20to%20order%3A%20{{ product.name|urlencode }}" target="_blank" rel="noopener" aria-label="Order {{ product.name }} via WhatsApp"><i class="bi bi-whatsapp"></i><span>Order</span></a>{% endif %}</div></div>
+          <div class="product-body"><h3>{{ product.name }}</h3><p>{{ product.description|truncatewords:12 }}</p><div class="product-footer"><span class="price">{% if product.name == 'Blush Rose Bouquet' %}₹399{% elif product.name == 'Pastel Bloom Pot' %}₹149{% elif product.name == 'Garden Crochet Basket' or product.name == 'Garden Floral Basket' %}₹199{% else %}₹{{ product.price|floatformat:0 }}{% endif %}</span>{% if site_settings.whatsapp_number %}<a class="whatsapp-order" href="https://wa.me/{{ site_settings.whatsapp_number }}?text=Hello%2C%20I%20would%20like%20to%20order%3A%20{{ product.name|urlencode }}" target="_blank" rel="noopener" aria-label="Order {{ product.name }} via WhatsApp"><i class="bi bi-whatsapp"></i><span>Order</span></a>{% endif %}</div></div>
         </article>
       </div>
       {% empty %}

@@ -43,7 +43,7 @@ class Migration(migrations.Migration):
             name='SiteSettings',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('business_name', models.CharField(default='Lishu Crochet', max_length=150)),
+                ('business_name', models.CharField(default='Lishu Floral Creations', max_length=150)),
                 ('logo', models.ImageField(blank=True, null=True, upload_to='site/')),
                 ('phone_number', models.CharField(blank=True, max_length=30)),
                 ('whatsapp_number', models.CharField(blank=True, help_text='Digits only, including country code', max_length=30)),
@@ -52,8 +52,8 @@ class Migration(migrations.Migration):
                 ('instagram_link', models.URLField(blank=True)),
                 ('facebook_link', models.URLField(blank=True)),
                 ('youtube_link', models.URLField(blank=True)),
-                ('copyright_text', models.CharField(default='© {year} Lishu Crochet. All rights reserved.', max_length=200)),
-                ('hero_text', models.CharField(default='Thoughtfully handcrafted flowers and crochet gifts, made with love.', max_length=220)),
+                ('copyright_text', models.CharField(default='© {year} Lishu Floral Creations. All rights reserved.', max_length=200)),
+                ('hero_text', models.CharField(default='Thoughtfully handcrafted flowers and related gifts, made with love.', max_length=220)),
             ],
             options={
                 'verbose_name': 'Site Setting',

@@ -1,6 +1,6 @@
-# Lishu Crochet
+# Lishu Floral Creations
 
-A responsive, production-capable Django single-page website for a handmade floral and crochet gifts business.
+A responsive, production-capable Django single-page website for a handmade floral creations and pipe-cleaner craft gifts business.
 
 ## Features
 
