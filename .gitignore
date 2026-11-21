@@ -1,0 +1,19 @@
+# Environment and secrets
+.env
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Django local data
+db.sqlite3
+staticfiles/
+media/products/
+media/site/
+
+# Editor and OS files
+.DS_Store
+.vscode/

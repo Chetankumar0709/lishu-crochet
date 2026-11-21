@@ -1,0 +1,80 @@
+{% extends 'base.html' %}{% load static %}
+{% block og_image %}{% if featured_products %}{{ request.scheme }}://{{ request.get_host }}{{ featured_products.0.image.url }}{% else %}{% endif %}{% endblock %}
+{% block content %}
+<div id="top"></div>
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-bg" {% if featured_products %}style="background-image: linear-gradient(90deg, rgba(45,29,35,.78), rgba(45,29,35,.12)), url('{{ featured_products.0.image.url }}')"{% endif %}></div>
+  <div class="container hero-content">
+    <p class="eyebrow">HANDMADE WITH LOVE</p>
+    <h1 id="hero-title">Flowers that last,<br><em>memories that bloom.</em></h1>
+    <p class="hero-lead">{{ site_settings.hero_text|default:"Thoughtfully handcrafted flowers and crochet gifts, made with love." }}</p>
+    <div class="hero-actions"><a class="btn btn-primary btn-lg" href="#products">Shop Now <i class="bi bi-arrow-down ms-2"></i></a>{% if site_settings.whatsapp_number %}<a class="btn btn-outline-light btn-lg" href="https://wa.me/{{ site_settings.whatsapp_number }}?text=Hello%2C%20I%20would%20like%20to%20know%20more%20about%20your%20products" target="_blank" rel="noopener"><i class="bi bi-whatsapp me-2"></i>WhatsApp</a>{% endif %}</div>
+  </div>
+  <a class="scroll-cue" href="#about" aria-label="Scroll to about section"><i class="bi bi-chevron-double-down"></i></a>
+</section>
+
+<section class="section about-section" id="about">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-6">
+        <div class="about-image-wrap"><img src="{% static 'images/IMG_20261121_084449.jpg' %}" alt="Handmade floral gift crafted with care" class="img-fluid about-image"><div class="experience-badge"><strong>100%</strong><span>Handmade</span></div></div>
+      </div>
+      <div class="col-lg-6 ps-lg-5">
+        <p class="section-eyebrow">OUR STORY</p><h2 class="section-title">Every stitch carries<br><em>a little love.</em></h2>
+        <p class="section-text">At {{ site_settings.business_name|default:"Lishu Crochet" }}, each creation begins with care and grows with patience. Our crochet flowers and handmade arrangements preserve the warmth of fresh blooms without the fleeting moment, helping you preserve beautiful memories for a long time.</p>
+        <p class="section-text">We follow an eco-friendly approach by creating lasting handmade gifts that bring beauty without the everyday waste of fresh flowers. We also support and customise every creation according to your specific requirements, from colours and flowers to the final finishing.</p>
+        <a href="#contact" class="text-link">Request a custom piece <i class="bi bi-arrow-right ms-2"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section products-section" id="products">
+  <div class="container">
+    <div class="section-heading text-center"><p class="section-eyebrow">MADE FOR YOUR MOMENTS</p><h2 class="section-title">Featured <em>Creations</em></h2></div>
+    {% if categories %}<div class="category-pills" role="group" aria-label="Filter products"><button class="category-pill active" data-filter="all">All</button>{% for category in categories %}<button class="category-pill" data-filter="category-{{ category.id }}">{{ category.name }}</button>{% endfor %}</div>{% endif %}
+    <div class="row g-4">
+      {% for product in featured_products %}
+      <div class="col-sm-6 col-lg-3 product-item category-{{ product.category_id }}" id="product-{{ product.pk }}">
+        <article class="product-card">
+          <div class="product-image-wrap"><img src="{{ product.image.url }}" alt="{{ product.name }} handmade gift" loading="lazy"><div class="product-category">{{ product.category.name }}</div></div>
+          <div class="product-body"><h3>{{ product.name }}</h3><p>{{ product.description|truncatewords:12 }}</p><div class="product-footer"><span class="price">₹{{ product.price|floatformat:0 }}</span>{% if site_settings.whatsapp_number %}<a class="whatsapp-order" href="https://wa.me/{{ site_settings.whatsapp_number }}?text=Hello%2C%20I%20would%20like%20to%20order%3A%20{{ product.name|urlencode }}" target="_blank" rel="noopener" aria-label="Order {{ product.name }} via WhatsApp"><i class="bi bi-whatsapp"></i><span>Order</span></a>{% endif %}</div></div>
+        </article>
+      </div>
+      {% empty %}
+      <div class="col-12 text-center"><p class="empty-state">Our featured collection is coming soon. Please contact us for custom orders.</p></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section benefits-section">
+  <div class="container"><div class="section-heading text-center"><p class="section-eyebrow">WHY CHOOSE US</p><h2 class="section-title">Thoughtful in <em>every detail</em></h2></div>
+    <div class="row g-4">
+      <div class="col-sm-6 col-lg-3"><div class="benefit-card"><div class="benefit-icon"><i class="bi bi-scissors"></i></div><h3>Handmade</h3><p>Crafted individually by hand, never mass produced.</p></div></div>
+      <div class="col-sm-6 col-lg-3"><div class="benefit-card"><div class="benefit-icon"><i class="bi bi-gem"></i></div><h3>Eco-friendly &amp; lasting</h3><p>Beautiful handmade creations made for preserving memories for a long time.</p></div></div>
+      <div class="col-sm-6 col-lg-3"><div class="benefit-card"><div class="benefit-icon"><i class="bi bi-palette"></i></div><h3>Custom Design</h3><p>Personal colours, flowers and details created according to your requirements.</p></div></div>
+      <div class="col-sm-6 col-lg-3"><div class="benefit-card"><div class="benefit-icon"><i class="bi bi-truck"></i></div><h3>Careful Delivery</h3><p>Protected packaging and timely updates for your order.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section reviews-section" id="reviews">
+  <div class="container"><div class="section-heading text-center"><p class="section-eyebrow">CUSTOMER LOVE</p><h2 class="section-title">Words from <em>our happy customers</em></h2></div>
+    <div class="row g-4 justify-content-center">
+      {% for testimonial in testimonials %}<div class="col-md-4"><article class="testimonial-card"><div class="stars" aria-label="{{ testimonial.rating }} out of 5 stars">{% for i in "12345" %}{% if forloop.counter <= testimonial.rating %}<i class="bi bi-star-fill"></i>{% else %}<i class="bi bi-star"></i>{% endif %}{% endfor %}</div><blockquote>“{{ testimonial.review }}”</blockquote><div class="customer"><span class="customer-avatar">{{ testimonial.customer_name|slice:"1"|upper }}</span><strong>{{ testimonial.customer_name }}</strong></div></article></div>{% empty %}<div class="col-md-8 text-center"><p>Lovely reviews from our customers will appear here.</p></div>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section contact-section" id="contact">
+  <div class="container"><div class="row gy-5"><div class="col-lg-5"><p class="section-eyebrow">GET IN TOUCH</p><h2 class="section-title">Let's create something <em>beautiful</em></h2><p class="section-text">Planning a gift or a custom floral arrangement? Tell us what you imagine, and we will help bring it to life.</p>
+      <div class="contact-details">{% if site_settings.phone_number %}<a href="tel:{{ site_settings.phone_number }}"><i class="bi bi-telephone"></i><span><small>Call us</small>{{ site_settings.phone_number }}</span></a>{% endif %}{% if site_settings.email %}<a href="mailto:{{ site_settings.email }}"><i class="bi bi-envelope"></i><span><small>Email us</small>{{ site_settings.email }}</span></a>{% endif %}{% if site_settings.address %}<div><i class="bi bi-geo-alt"></i><span><small>Visit us</small>{{ site_settings.address }}</span></div>{% endif %}</div>
+      <div class="map-placeholder"><div><i class="bi bi-map"></i><span>Google Maps</span></div></div>
+    </div>
+    <div class="col-lg-7"><div class="contact-card">
+      {% if messages %}{% for message in messages %}<div class="alert {% if message.tags == 'success' %}alert-success{% else %}alert-danger{% endif %}" role="alert">{{ message }}</div>{% endfor %}{% endif %}
+      <form method="post" novalidate>{% csrf_token %}<div class="row g-3"><div class="col-sm-6"><label class="form-label" for="id_name">Name</label>{{ contact_form.name }}{% for error in contact_form.name.errors %}<div class="invalid-feedback d-block">{{ error }}</div>{% endfor %}</div><div class="col-sm-6"><label class="form-label" for="id_email">Email</label>{{ contact_form.email }}{% for error in contact_form.email.errors %}<div class="invalid-feedback d-block">{{ error }}</div>{% endfor %}</div><div class="col-12"><label class="form-label" for="id_phone">Phone <span>(optional)</span></label>{{ contact_form.phone }}{% for error in contact_form.phone.errors %}<div class="invalid-feedback d-block">{{ error }}</div>{% endfor %}</div><div class="col-12"><label class="form-label" for="id_message">Your message</label>{{ contact_form.message }}{% for error in contact_form.message.errors %}<div class="invalid-feedback d-block">{{ error }}</div>{% endfor %}</div><div class="col-12"><button type="submit" class="btn btn-primary btn-lg w-100">Send Enquiry <i class="bi bi-send ms-2"></i></button></div></div></form>
+    </div></div></div></div>
+</section>
+{% endblock %}
