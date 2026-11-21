@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: lishu-floral-creations
+    runtime: python
+    plan: free
+    buildCommand: >-
+      pip install -r requirements.txt &&
+      mkdir -p media/products &&
+      cp static/images/*.jpg media/products/ &&
+      python manage.py collectstatic --noinput &&
+      python manage.py migrate &&
+      python manage.py loaddata products/fixtures/sample_data.json
+    startCommand: gunicorn config.wsgi:application
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.4
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
+      - key: SECURE_SSL_REDIRECT
+        value: "True"
+      - key: RENDER_FREE_DEPLOYMENT
+        value: "True"

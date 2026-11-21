@@ -71,13 +71,10 @@ python -c "from django.core.management.utils import get_random_secret_key; print
 
 ### Render
 
-1. Create a Web Service from the Git repository.
-2. Set runtime to Python 3.13.
-3. Build command: `pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate`
-4. Start command: `gunicorn config.wsgi:application`
-5. Add `gunicorn>=23.0` to requirements.txt before deployment.
-6. Add environment variables listed above.
-7. Add a persistent disk mounted at `/opt/render/project/src/media` if available, or use object storage for media in production.
+1. Connect the GitHub repository to Render and create a Blueprint from `render.yaml`.
+2. Render builds and deploys the free web service, seeds the sample products, and provides a public `onrender.com` URL.
+
+The free service sleeps after inactivity and has ephemeral storage. This preview rebuilds its sample database on deploy; contact enquiries and admin changes may be lost when the service restarts or sleeps. Product images are collected as static files for the preview. Use persistent database and media storage before relying on the site for customer enquiries or ongoing administration.
 
 ### PythonAnywhere
 
