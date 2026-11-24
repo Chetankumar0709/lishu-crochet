@@ -1,4 +1,6 @@
 {% extends 'base.html' %}{% load static %}
+{% block title %}Lishu Floral Creations | Handmade Flower Bouquets & Gifts{% endblock %}
+{% block meta_description %}Discover handmade floral gifts, pipe-cleaner flower bouquets and custom arrangements from Lishu Floral Creations. Contact us to order a thoughtful keepsake.{% endblock %}
 {% block og_image %}{% if featured_products %}{{ request.scheme }}://{{ request.get_host }}{{ featured_products.0.image.url }}{% else %}{% endif %}{% endblock %}
 {% block content %}
 <div id="top"></div>
@@ -38,7 +40,7 @@
       <div class="col-sm-6 col-lg-3 product-item category-{{ product.category_id }}" id="product-{{ product.pk }}">
         <article class="product-card">
           <div class="product-image-wrap"><img src="{{ product.image.url }}" alt="{{ product.name }} handmade gift" loading="lazy"><div class="product-category">{{ product.category.name }}</div></div>
-          <div class="product-body"><h3>{{ product.name }}</h3><p>{{ product.description|truncatewords:12 }}</p><div class="product-footer"><span class="price">{% if product.name == 'Blush Rose Bouquet' %}₹399{% elif product.name == 'Pastel Bloom Pot' %}₹149{% elif product.name == 'Garden Crochet Basket' or product.name == 'Garden Floral Basket' %}₹199{% else %}₹{{ product.price|floatformat:0 }}{% endif %}</span>{% if site_settings.whatsapp_number %}<a class="whatsapp-order" href="https://wa.me/{{ site_settings.whatsapp_number }}?text=Hello%2C%20I%20would%20like%20to%20order%3A%20{{ product.name|urlencode }}" target="_blank" rel="noopener" aria-label="Order {{ product.name }} via WhatsApp"><i class="bi bi-whatsapp"></i><span>Order</span></a>{% endif %}</div></div>
+          <div class="product-body"><h3>{{ product.name }}</h3><p>{{ product.description|truncatewords:12 }}</p><div class="product-footer">{% if product.name == 'Custom Floral Keepsake' %}<span class="price">Price varies by customization</span>{% else %}<span class="price">{% if product.name == 'Blush Rose Bouquet' %}₹399{% elif product.name == 'Pastel Bloom Pot' %}₹149{% elif product.name == 'Garden Crochet Basket' or product.name == 'Garden Floral Basket' %}₹199{% else %}₹{{ product.price|floatformat:0 }}{% endif %}</span>{% endif %}{% if site_settings.whatsapp_number %}<a class="whatsapp-order" href="https://wa.me/{{ site_settings.whatsapp_number }}?text=Hello%2C%20I%20would%20like%20to%20order%3A%20{{ product.name|urlencode }}" target="_blank" rel="noopener" aria-label="Order {{ product.name }} via WhatsApp"><i class="bi bi-whatsapp"></i><span>Order</span></a>{% endif %}</div></div>
         </article>
       </div>
       {% empty %}
@@ -70,7 +72,7 @@
 <section class="section contact-section" id="contact">
   <div class="container"><div class="row gy-5"><div class="col-lg-5"><p class="section-eyebrow">GET IN TOUCH</p><h2 class="section-title">Let's create something <em>beautiful</em></h2><p class="section-text">Planning a gift or a custom floral arrangement? Tell us what you imagine, and we will help bring it to life.</p>
       <div class="contact-details">{% if site_settings.phone_number %}<a href="tel:{{ site_settings.phone_number }}"><i class="bi bi-telephone"></i><span><small>Call us</small>{{ site_settings.phone_number }}</span></a>{% endif %}{% if site_settings.email %}<a href="mailto:{{ site_settings.email }}"><i class="bi bi-envelope"></i><span><small>Email us</small>{{ site_settings.email }}</span></a>{% endif %}{% if site_settings.address %}<div><i class="bi bi-geo-alt"></i><span><small>Visit us</small>{{ site_settings.address }}</span></div>{% endif %}</div>
-      <div class="map-placeholder"><div><i class="bi bi-map"></i><span>Google Maps</span></div></div>
+      <div class="map-placeholder"><a href="https://www.google.com/maps/search/?api=1&amp;query=139%2C%20Guru%20Chinnappa%20Rd%2C%20Sandyagappa%20Reddy%20Layout%2C%20Coffee%20Board%20Layout%2C%20Nagavara%2C%20Bengaluru%2C%20Karnataka%20560024" target="_blank" rel="noopener" aria-label="Open Google Maps"><div><i class="bi bi-map"></i><span>Open Google Maps</span></div></a></div>
     </div>
     <div class="col-lg-7"><div class="contact-card">
       {% if messages %}{% for message in messages %}<div class="alert {% if message.tags == 'success' %}alert-success{% else %}alert-danger{% endif %}" role="alert">{{ message }}</div>{% endfor %}{% endif %}

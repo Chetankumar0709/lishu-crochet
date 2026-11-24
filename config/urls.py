@@ -5,9 +5,9 @@ from django.contrib.sitemaps.views import sitemap
 from django.urls import path, include
 from django.views.generic import TemplateView
 
-from products.sitemaps import ProductSitemap, StaticSitemap
+from products.sitemaps import StaticSitemap
 
-sitemaps = {"static": StaticSitemap, "products": ProductSitemap}
+sitemaps = {"static": StaticSitemap}
 
 urlpatterns = [
     path("admin/", admin.site.urls),
